@@ -1,5 +1,5 @@
 "use client";
-declare const event: string;
+
 export default function login() {
   return (
     <div className="flex flex-col justify-between min-h-screen">

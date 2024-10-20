@@ -10,7 +10,6 @@ export default function Home() {
         <Profile />
         <Faqs />
       </div>
-      <div className="md:hidden"></div>
     </div>
   );
 }
