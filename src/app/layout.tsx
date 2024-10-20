@@ -1,7 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { inter } from "@/app/ui/fonts";
-// import Navbar from "@/components/Navbar/page";
+import Navbar from "@/components/Navbar/page";
+import Footer from "@/components/Footer/page";
 
 export const metadata: Metadata = {
   title: "Edu Tutorials",
@@ -16,8 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        {/* <Navbar /> */}
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
