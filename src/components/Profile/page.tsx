@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ProfileImage from "@/public/images/Profile.svg";
 
 export default function Profile() {
   return (
@@ -7,7 +8,7 @@ export default function Profile() {
         <div className="sm:flex justify-around items-center sm:px-8">
           <div>
             <Image
-              src="/images/Profile.svg"
+              src={ProfileImage}
               alt=""
               className="size-30  mx-auto rounded-full object-cover"
               width="200"
