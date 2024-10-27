@@ -1,6 +1,43 @@
+"use client";
+
 import Link from "next/link";
+import { signIn, signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Navbar() {
+  const { data: session } = useSession();
+  const router = useRouter();
+  useEffect(() => {
+    if (session) {
+      router.push("/about");
+    } else {
+      router.push("/");
+    }
+  }, [session, router]);
+
+  const notLoggedIn = () => {
+    return (
+      <button
+        onClick={() => signIn("google")}
+        className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow"
+      >
+        Login
+      </button>
+    );
+  };
+
+  const loggedIn = () => {
+    return (
+      <button
+        onClick={() => signOut()}
+        className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow"
+      >
+        Log out
+      </button>
+    );
+  };
+
   return (
     <header
       className=" mt-2 bg-white backdrop-blur-md shadow-md w-full
@@ -78,21 +115,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-4">
             <div className="sm:flex sm:gap-4">
-              <Link
-                className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow"
-                href="/login"
-              >
-                Login
-              </Link>
-
-              <div className="hidden sm:flex">
-                <Link
-                  className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600"
-                  href="/register"
-                >
-                  Register
-                </Link>
-              </div>
+              {session ? loggedIn() : notLoggedIn()}
             </div>
 
             <div className="block md:hidden">
