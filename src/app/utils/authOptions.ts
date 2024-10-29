@@ -64,7 +64,7 @@ export const authOptions: NextAuthOptions = {
 
     async redirect({ baseUrl }) {
       // Redirect to a specific page after successful login
-      return baseUrl + "/about"; // Change '/dashboard' to your desired path
+      return baseUrl + "/dashboard"; // Change '/dashboard' to your desired path
     },
   },
   secret: process.env.AUTH_SECRET!,

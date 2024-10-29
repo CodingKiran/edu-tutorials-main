@@ -10,9 +10,7 @@ export default function Navbar() {
   const router = useRouter();
   useEffect(() => {
     if (session) {
-      router.push("/about");
-    } else {
-      router.push("/");
+      router.push("/dashboard");
     }
   }, [session, router]);
 
