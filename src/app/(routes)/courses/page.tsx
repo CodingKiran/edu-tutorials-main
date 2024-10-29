@@ -1,11 +1,14 @@
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 
+import { BookOpen } from "lucide-react";
 import Image from "next/image";
 // import Link from "next/link";
 
@@ -103,6 +106,12 @@ export default function Courses() {
                   {each.duration}
                 </p>
               </CardContent>
+              <CardFooter className="flex justify-center">
+                <Button className="w-full">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  View Course
+                </Button>
+              </CardFooter>
             </Card>
           </li>
         ))}
