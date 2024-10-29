@@ -76,10 +76,10 @@ export default function Courses() {
     },
   ];
   return (
-    <section className=" flex justify-center m-8 ">
-      <ul className=" w-3/4 flex gap-4 justify-center items-center">
+    <section className="flex justify-center m-8 ">
+      <ul className=" lg:w-3/4 md:flex gap-4 justify-center items-center">
         {courses.map((each, i) => (
-          <li key={i}>
+          <li className="py-4" key={i}>
             <Card>
               <Image
                 className="px-8 py-4 w-fit"
