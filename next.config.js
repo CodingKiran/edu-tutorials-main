@@ -1,6 +1,11 @@
 // next.config.js
 module.exports = {
   images: {
-    domains: ["images.unsplash.com", "lh3.googleusercontent.com"], // Add the allowed domains here
+    domains: [
+      "unsplash.com",
+      "images.unsplash.com",
+      "lh3.googleusercontent.com",
+      "cdn.pixabay.com",
+    ], // Add the allowed domains here
   },
 };
