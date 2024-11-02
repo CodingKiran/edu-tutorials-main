@@ -3,9 +3,10 @@
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
+  const [navbar, showNavbar] = useState<boolean>(false);
   const { data: session } = useSession();
   const router = useRouter();
   useEffect(() => {
@@ -34,6 +35,10 @@ export default function Navbar() {
         Log out
       </button>
     );
+  };
+
+  const handleMenu = () => {
+    showNavbar(!navbar);
   };
 
   return (
@@ -117,7 +122,10 @@ export default function Navbar() {
             </div>
 
             <div className="block md:hidden">
-              <button className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
+              <button
+                onClick={handleMenu}
+                className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="size-5"
@@ -136,6 +144,54 @@ export default function Navbar() {
             </div>
           </div>
         </div>
+        {navbar && (
+          <div className="text-center absolute left-0 right-0 bg-white z-20 mt-2 rounded-md shadow-lg">
+            <nav aria-label="Mobile Menu">
+              <ul className="flex flex-col gap-4 p-4 text-md">
+                <li>
+                  <Link
+                    className="text-gray-500 transition hover:text-gray-500/75"
+                    href="/courses"
+                  >
+                    Courses
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-gray-500 transition hover:text-gray-500/75"
+                    href="/freeresources"
+                  >
+                    Free Resources
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-gray-500 transition hover:text-gray-500/75"
+                    href="/blog"
+                  >
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-gray-500 transition hover:text-gray-500/75"
+                    href="/about"
+                  >
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-gray-500 transition hover:text-gray-500/75"
+                    href="/contact"
+                  >
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );
