@@ -3,10 +3,13 @@
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Navbar() {
   const [navbar, showNavbar] = useState<boolean>(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null); // Create a ref for the mobile menu
+  const buttonRef = useRef<HTMLButtonElement>(null); // Create a ref for the menu button
+
   const { data: session } = useSession();
   const router = useRouter();
   useEffect(() => {
@@ -40,6 +43,24 @@ export default function Navbar() {
   const handleMenu = () => {
     showNavbar(!navbar);
   };
+
+  const handleMouseLeave = (event: MouseEvent) => {
+    if (
+      mobileMenuRef.current &&
+      buttonRef.current &&
+      !mobileMenuRef.current.contains(event.target as Node) &&
+      !buttonRef.current.contains(event.target as Node)
+    ) {
+      showNavbar(false); // Close the mobile menu
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleMouseLeave);
+    return () => {
+      document.removeEventListener("click", handleMouseLeave);
+    };
+  }, []);
 
   return (
     <header
@@ -80,7 +101,7 @@ export default function Navbar() {
                 <li>
                   <Link
                     className="text-gray-500 transition hover:text-gray-500/75"
-                    href="/freeresources"
+                    href="/resources"
                   >
                     Free Resources
                   </Link>
@@ -123,6 +144,7 @@ export default function Navbar() {
 
             <div className="block md:hidden">
               <button
+                ref={buttonRef}
                 onClick={handleMenu}
                 className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
               >
@@ -145,7 +167,10 @@ export default function Navbar() {
           </div>
         </div>
         {navbar && (
-          <div className="text-center absolute left-0 right-0 bg-white z-20 mt-2 rounded-md shadow-lg">
+          <div
+            ref={mobileMenuRef}
+            className="text-center absolute left-0 right-0 bg-white z-20 mt-2 rounded-md shadow-lg"
+          >
             <nav aria-label="Mobile Menu">
               <ul className="flex flex-col gap-4 p-4 text-md">
                 <li>
@@ -159,7 +184,7 @@ export default function Navbar() {
                 <li>
                   <Link
                     className="text-gray-500 transition hover:text-gray-500/75"
-                    href="/freeresources"
+                    href="/resources"
                   >
                     Free Resources
                   </Link>
