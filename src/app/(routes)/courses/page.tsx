@@ -1,8 +1,9 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -10,12 +11,12 @@ import {
 
 import { BookOpen } from "lucide-react";
 import Image from "next/image";
-// import Link from "next/link";
+import Link from "next/link";
 
 export default function Courses() {
   const courses = [
     {
-      id: "101",
+      id: 101,
       title: "Accounting Standards & Reporting",
       instructor: "Tarak Anand",
       semester: "I",
@@ -35,7 +36,7 @@ export default function Courses() {
       duration: "3 hours per week",
     },
     {
-      id: "102",
+      id: 102,
       title: "Organizational Behavior",
       instructor: "Tarak Anand",
       semester: "I",
@@ -55,7 +56,7 @@ export default function Courses() {
       duration: "3 hours per week",
     },
     {
-      id: "103",
+      id: 103,
       title: "Business Environment and Policy",
       instructor: "Tarak Anand",
       semester: "I",
@@ -76,46 +77,55 @@ export default function Courses() {
     },
   ];
   return (
-    <section className="flex justify-center m-8 ">
-      <ul className=" lg:w-3/4 md:flex gap-4 justify-center items-center">
-        {courses.map((each, i) => (
-          <li className="py-4" key={i}>
-            <Card>
-              <Image
-                className="px-8 py-4 w-fit"
-                src={each.image}
-                alt=""
-                width={300}
-                height={400}
-              />
-              <CardHeader>
-                <CardTitle>{each.title} </CardTitle>
-                <CardDescription>{each.description} </CardDescription>
-              </CardHeader>
-              <CardContent className="flex flex-col gap-2">
-                <p>
-                  <span className="font-semibold">Semester: </span>
-                  {each.semester}
+    <div className="container mx-auto p-4 min-h-screen">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {courses.map((course, i) => (
+          <Card key={i} className="flex flex-col h-full">
+            <CardHeader>
+              <div className="aspect-video relative mb-4 overflow-hidden rounded-lg">
+                <Image
+                  src={course.image}
+                  alt={course.title}
+                  className="object-cover w-full h-full transition-transform hover:scale-105"
+                  width={100}
+                  height={100}
+                />
+              </div>
+              <CardTitle className="line-clamp-2">{course.title}</CardTitle>
+            </CardHeader>
+            <CardContent className="flex-grow">
+              <div className="space-y-2">
+                <p className="text-sm text-muted-foreground">
+                  <span className="font-medium text-foreground">
+                    Instructor:
+                  </span>{" "}
+                  {course.instructor}
                 </p>
-                <p>
-                  <span className="font-semibold">Section: </span>
-                  {each.section}
+                <p className="text-sm text-muted-foreground">
+                  <span className="font-medium text-foreground">Section:</span>{" "}
+                  {course.section}
                 </p>
-                <p>
-                  <span className="font-semibold">Duration: </span>
-                  {each.duration}
+                <p className="text-sm text-muted-foreground">
+                  <span className="font-medium text-foreground">Semester:</span>{" "}
+                  {course.semester}
                 </p>
-              </CardContent>
-              <CardFooter className="flex justify-center">
+
+                <p className="text-sm text-muted-foreground line-clamp-2">
+                  {course.description}
+                </p>
+              </div>
+            </CardContent>
+            <CardFooter>
+              <Link href={`/courses/${course.id}`} className="w-full">
                 <Button className="w-full">
                   <BookOpen className="mr-2 h-4 w-4" />
                   View Course
                 </Button>
-              </CardFooter>
-            </Card>
-          </li>
+              </Link>
+            </CardFooter>
+          </Card>
         ))}
       </ul>
-    </section>
+    </div>
   );
 }
