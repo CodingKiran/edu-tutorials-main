@@ -10,9 +10,9 @@ export async function middleware(req: NextRequest) {
 
   const publicPaths = path === "/" || path === "/login";
 
-  if (publicPaths && token) {
-    return NextResponse.redirect(new URL("/dashboard", req.nextUrl));
-  }
+  // if (publicPaths && token) {
+  //   return NextResponse.redirect(new URL("/dashboard", req.nextUrl));
+  // }
   if (!publicPaths && !token) {
     return NextResponse.redirect(new URL("/", req.nextUrl));
   }

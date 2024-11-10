@@ -4,17 +4,25 @@ import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 export default function Navbar() {
+  const router = useRouter();
+  const { data: session } = useSession();
+  // use states
   const [navbar, showNavbar] = useState<boolean>(false);
+  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+
+  // mobile refs
   const mobileMenuRef = useRef<HTMLDivElement>(null); // Create a ref for the mobile menu
   const buttonRef = useRef<HTMLButtonElement>(null); // Create a ref for the menu button
 
-  const { data: session } = useSession();
-  const router = useRouter();
+  const userImage = session?.user?.image;
+
   useEffect(() => {
     if (session) {
-      router.push("/dashboard");
+      router.push("/");
     }
   }, [session, router]);
 
@@ -29,38 +37,66 @@ export default function Navbar() {
     );
   };
 
+  const handleMouseEnter = () => {
+    if (timeoutId) {
+      clearTimeout(timeoutId); // Clear the timeout if hovering again
+    }
+    setDropdownOpen(true); // Show dropdown
+  };
+
+  const handleMouseLeaveUser = () => {
+    const id = setTimeout(() => {
+      setDropdownOpen(false); // Hide dropdown after a delay
+    }, 200); // Adjust the delay as needed (200ms in this example)
+    setTimeoutId(id); // Store the timeout ID
+  };
+
   const loggedIn = () => {
     return (
-      <button
-        onClick={() => signOut({ callbackUrl: "/" })}
-        className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow"
+      <div
+        className="relative"
+        onMouseEnter={handleMouseEnter} // Show dropdown on hover
+        onMouseLeave={handleMouseLeaveUser} // Hide dropdown when not hovering
       >
-        Log out
-      </button>
+        <button className="flex items-center">
+          <Image
+            src={userImage!} // Assuming the user image is stored in session.user.image
+            alt={session?.user?.name || "user-image"}
+            className="h-8 w-8 rounded-full" // Adjust size and shape as needed
+            width={40}
+            height={40}
+          />
+        </button>
+
+        {dropdownOpen && (
+          <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg z-20">
+            <ul className="py-2">
+              <li>
+                <Link
+                  href="/dashboard" // Link to the dashboard
+                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                >
+                  Dashboard
+                </Link>
+              </li>
+              <li>
+                <button
+                  onClick={() => signOut({ callbackUrl: "/" })}
+                  className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+                >
+                  Log out
+                </button>
+              </li>
+            </ul>
+          </div>
+        )}
+      </div>
     );
   };
 
   const handleMenu = () => {
     showNavbar(!navbar);
   };
-
-  const handleMouseLeave = (event: MouseEvent) => {
-    if (
-      mobileMenuRef.current &&
-      buttonRef.current &&
-      !mobileMenuRef.current.contains(event.target as Node) &&
-      !buttonRef.current.contains(event.target as Node)
-    ) {
-      showNavbar(false); // Close the mobile menu
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("click", handleMouseLeave);
-    return () => {
-      document.removeEventListener("click", handleMouseLeave);
-    };
-  }, []);
 
   return (
     <header

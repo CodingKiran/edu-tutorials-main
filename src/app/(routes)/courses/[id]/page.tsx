@@ -14,9 +14,7 @@ export default function CourseDetails() {
   const fallbackImage =
     "https://cdn.pixabay.com/photo/2014/07/06/13/55/calculator-385506_1280.jpg";
 
-  console.log("Fetched ID:", id);
   const course = Course.find((course) => course.id === id);
-  console.log("Found Course:", course);
 
   return (
     <main className="container mx-auto px-4 py-8 ">
@@ -120,10 +118,11 @@ export default function CourseDetails() {
               </ul>
             </CardContent>
           </Card>
-
-          <Button className="w-full" size="lg">
-            Enroll in Course
-          </Button>
+          <Link href={`/courses/${id}/learn`}>
+            <Button className="w-full" size="lg">
+              Enroll in Course
+            </Button>
+          </Link>
         </div>
       </div>
     </main>

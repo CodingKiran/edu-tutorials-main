@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { BookOpen } from "lucide-react";
 import type { Course } from "@/lib/course-data";
+import Image from "next/image";
 
 interface CourseCardProps {
   course: Course;
@@ -21,10 +22,12 @@ export function CourseCard({ course }: CourseCardProps) {
     <Card className="flex flex-col h-full">
       <CardHeader>
         <div className="aspect-video relative mb-4 overflow-hidden rounded-lg">
-          <img
+          <Image
             src={course.image}
             alt={course.title}
             className="object-cover w-full h-full transition-transform hover:scale-105"
+            width={360}
+            height={360}
           />
         </div>
         <CardTitle className="line-clamp-2">{course.title}</CardTitle>
