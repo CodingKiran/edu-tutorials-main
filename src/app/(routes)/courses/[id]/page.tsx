@@ -6,9 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Calendar, GraduationCap, Users } from "lucide-react";
 import { Course } from "@/lib/course-data";
+import Image from "next/image";
 
 export default function CourseDetails() {
   const { id } = useParams();
+
+  const fallbackImage =
+    "https://cdn.pixabay.com/photo/2014/07/06/13/55/calculator-385506_1280.jpg";
 
   console.log("Fetched ID:", id);
   const course = Course.find((course) => course.id === id);
@@ -33,10 +37,18 @@ export default function CourseDetails() {
             </CardHeader>
             <CardContent>
               <div className="aspect-video relative mb-6 overflow-hidden rounded-lg">
-                <img
-                  src={course?.image}
-                  alt={course?.title}
+                <Image
+                  src={
+                    course?.image &&
+                    typeof course.image === "string" &&
+                    course.image.trim() !== ""
+                      ? course.image
+                      : fallbackImage
+                  }
+                  alt={course?.title || "Course "}
                   className="object-cover w-full h-full"
+                  width={800}
+                  height={600}
                 />
               </div>
               <p className="text-lg text-muted-foreground mb-6">
