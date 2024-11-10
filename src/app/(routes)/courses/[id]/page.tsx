@@ -5,88 +5,13 @@ import { useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Calendar, GraduationCap, Users } from "lucide-react";
+import { Course } from "@/lib/course-data";
 
 export default function CourseDetails() {
   const { id } = useParams();
 
-  interface Course {
-    id: string;
-    title: string;
-    instructor: string;
-    semester: string;
-    section: string;
-    description: string;
-    image: string;
-    syllabus: string[];
-    objectives: string[];
-    duration: string;
-  }
-
-  const courses: Course[] = [
-    {
-      id: "101",
-      title: "Accounting Standards & Reporting",
-      instructor: "Tarak Anand",
-      semester: "I",
-      section: "A&F",
-      description:
-        "A comprehensive study of accounting standards and their application in financial reporting.",
-      image:
-        "https://cdn.pixabay.com/photo/2014/07/06/13/55/calculator-385506_1280.jpg",
-      syllabus: [
-        "Chapter 1: Introduction to Accounting Standards",
-        "Chapter 2: Accounting Standard 1: Disclosure of Accounting Policies",
-      ],
-      objectives: [
-        "To understand the theoretical framework of accounting standards.",
-        "To apply accounting standards to practical situations.",
-      ],
-      duration: "3 hours per week",
-    },
-    {
-      id: "102",
-      title: "Organizational Behavior",
-      instructor: "Tarak Anand",
-      semester: "I",
-      section: "A&F",
-      description:
-        "A study of individual behavior, group dynamics, and organizational processes.",
-      image:
-        "https://cdn.pixabay.com/photo/2014/07/06/13/55/calculator-385506_1280.jpg",
-      syllabus: [
-        "Chapter 1: Introduction to Organizational Behavior",
-        "Chapter 2: Individual Behavior",
-      ],
-      objectives: [
-        "To understand the concepts and theories of organizational behavior.",
-        "To analyze individual and group behavior in organizations.",
-      ],
-      duration: "3 hours per week",
-    },
-    {
-      id: "103",
-      title: "Business Environment and Policy",
-      instructor: "Tarak Anand",
-      semester: "I",
-      section: "A&F",
-      description:
-        "An analysis of the economic, political, legal, and social factors affecting business.",
-      image:
-        "https://cdn.pixabay.com/photo/2014/07/06/13/55/calculator-385506_1280.jpg",
-      syllabus: [
-        "Chapter 1: The Indian Economy",
-        "Chapter 2: Government Policies and Business",
-      ],
-      objectives: [
-        "To understand the Indian economic environment.",
-        "To analyze the impact of government policies on business.",
-      ],
-      duration: "3 hours per week",
-    },
-  ];
-
   console.log("Fetched ID:", id);
-  const course = courses.find((course) => course.id === id);
+  const course = Course.find((course) => course.id === id);
   console.log("Found Course:", course);
 
   return (

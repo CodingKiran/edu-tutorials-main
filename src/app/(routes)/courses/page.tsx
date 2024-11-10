@@ -1,131 +1,88 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 
-import { BookOpen } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { Search } from "lucide-react";
+
+import { Input } from "@/components/ui/input";
+
+import { useState } from "react";
+import CourseList from "@/components/CourseList/CourseList";
+
+const semesters = ["I", "II", "III", "IV"];
+const sections = ["A&F", "Regular", "FM"];
 
 export default function Courses() {
-  const courses = [
-    {
-      id: 101,
-      title: "Accounting Standards & Reporting",
-      instructor: "Tarak Anand",
-      semester: "I",
-      section: "A&F",
-      description:
-        "A comprehensive study of accounting standards and their application in financial reporting.",
-      image:
-        "https://cdn.pixabay.com/photo/2014/07/06/13/55/calculator-385506_1280.jpg",
-      syllabus: [
-        "Chapter 1: Introduction to Accounting Standards",
-        "Chapter 2: Accounting Standard 1: Disclosure of Accounting Policies",
-      ],
-      objectives: [
-        "To understand the theoretical framework of accounting standards.",
-        "To apply accounting standards to practical situations.",
-      ],
-      duration: "3 hours per week",
-    },
-    {
-      id: 102,
-      title: "Organizational Behavior",
-      instructor: "Tarak Anand",
-      semester: "I",
-      section: "A&F",
-      description:
-        "A study of individual behavior, group dynamics, and organizational processes.",
-      image:
-        "https://cdn.pixabay.com/photo/2014/07/06/13/55/calculator-385506_1280.jpg",
-      syllabus: [
-        "Chapter 1: Introduction to Organizational Behavior",
-        "Chapter 2: Individual Behavior",
-      ],
-      objectives: [
-        "To understand the concepts and theories of organizational behavior.",
-        "To analyze individual and group behavior in organizations.",
-      ],
-      duration: "3 hours per week",
-    },
-    {
-      id: 103,
-      title: "Business Environment and Policy",
-      instructor: "Tarak Anand",
-      semester: "I",
-      section: "A&F",
-      description:
-        "An analysis of the economic, political, legal, and social factors affecting business.",
-      image:
-        "https://cdn.pixabay.com/photo/2014/07/06/13/55/calculator-385506_1280.jpg",
-      syllabus: [
-        "Chapter 1: The Indian Economy",
-        "Chapter 2: Government Policies and Business",
-      ],
-      objectives: [
-        "To understand the Indian economic environment.",
-        "To analyze the impact of government policies on business.",
-      ],
-      duration: "3 hours per week",
-    },
-  ];
+  const [selectedSemester, setSelectedSemester] = useState<string>("");
+  const [selectedSection, setSelectedSection] = useState<string>("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const clearSelections = () => {
+    setSelectedSemester("");
+    setSelectedSection("");
+    setSearchQuery("");
+  };
   return (
     <div className="container mx-auto p-4 min-h-screen">
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {courses.map((course, i) => (
-          <Card key={i} className="flex flex-col h-full">
-            <CardHeader>
-              <div className="aspect-video relative mb-4 overflow-hidden rounded-lg">
-                <Image
-                  src={course.image}
-                  alt={course.title}
-                  className="object-cover w-full h-full transition-transform hover:scale-105"
-                  width={100}
-                  height={100}
-                />
-              </div>
-              <CardTitle className="line-clamp-2">{course.title}</CardTitle>
-            </CardHeader>
-            <CardContent className="flex-grow">
-              <div className="space-y-2">
-                <p className="text-sm text-muted-foreground">
-                  <span className="font-medium text-foreground">
-                    Instructor:
-                  </span>{" "}
-                  {course.instructor}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  <span className="font-medium text-foreground">Section:</span>{" "}
-                  {course.section}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  <span className="font-medium text-foreground">Semester:</span>{" "}
-                  {course.semester}
-                </p>
+      <main className="container mx-auto px-4 py-8">
+        <h1 className="text-4xl font-bold mb-8">Available Courses</h1>
 
-                <p className="text-sm text-muted-foreground line-clamp-2">
-                  {course.description}
-                </p>
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Link href={`/courses/${course.id}`} className="w-full">
-                <Button className="w-full">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  View Course
-                </Button>
-              </Link>
-            </CardFooter>
-          </Card>
-        ))}
-      </ul>
+        <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-4 mb-8">
+          <div className="relative">
+            <Input
+              placeholder="Search courses..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10"
+            />
+            <Search className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
+          </div>
+
+          <Select value={selectedSemester} onValueChange={setSelectedSemester}>
+            <SelectTrigger>
+              <SelectValue placeholder="Select Semester" />
+            </SelectTrigger>
+            <SelectContent>
+              {semesters.map((semester) => (
+                <SelectItem key={semester} value={semester}>
+                  {semester}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          <Select value={selectedSection} onValueChange={setSelectedSection}>
+            <SelectTrigger>
+              <SelectValue placeholder="Select Section" />
+            </SelectTrigger>
+            <SelectContent>
+              {sections.map((section) => (
+                <SelectItem key={section} value={section}>
+                  {section}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Button
+            onClick={clearSelections}
+            className="col-span-1 md:col-span-1 lg:col-span-1 px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-800"
+          >
+            Clear Selections
+          </Button>
+        </div>
+
+        <CourseList
+          semester={selectedSemester}
+          section={selectedSection}
+          searchQuery={searchQuery}
+        />
+      </main>
     </div>
   );
 }
