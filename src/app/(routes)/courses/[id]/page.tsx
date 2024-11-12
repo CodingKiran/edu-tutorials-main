@@ -36,13 +36,7 @@ export default function CourseDetails() {
             <CardContent>
               <div className="aspect-video relative mb-6 overflow-hidden rounded-lg">
                 <Image
-                  src={
-                    course?.image &&
-                    typeof course.image === "string" &&
-                    course.image.trim() !== ""
-                      ? course.image
-                      : fallbackImage
-                  }
+                  src={fallbackImage}
                   alt={course?.title || "Course "}
                   className="object-cover w-full h-full"
                   width={800}

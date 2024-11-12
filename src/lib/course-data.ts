@@ -6,12 +6,14 @@ export interface Course {
   section: string;
   semester: string;
   description: string;
+  price: number;
 }
 
 export const Course = [
   {
     id: "101-AF",
     title: "Accounting Standards & Reporting",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "I",
     section: "A&F",
@@ -32,6 +34,7 @@ export const Course = [
   {
     id: "102-AF",
     title: "Organizational Behavior",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "I",
     section: "A&F",
@@ -52,6 +55,7 @@ export const Course = [
   {
     id: "103-AF",
     title: "Business Environment and Policy",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "I",
     section: "A&F",
@@ -73,6 +77,7 @@ export const Course = [
   {
     id: "104-Af",
     title: "Managerial Economics",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "I",
     section: "A&F",
@@ -98,6 +103,7 @@ export const Course = [
   {
     id: "105-AF",
     title: "Corporate Governance",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "I",
     section: "A&F",
@@ -123,6 +129,7 @@ export const Course = [
   {
     id: "201-AF",
     title: "Advanced Cost Accounting",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "II",
     section: "A&F",
@@ -146,6 +153,7 @@ export const Course = [
   {
     id: "202-AF",
     title: "Financial Management",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "II",
     section: "A&F",
@@ -170,6 +178,7 @@ export const Course = [
   {
     id: "203-AF",
     title: "Marketing Management",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "II",
     section: "A&F",
@@ -196,6 +205,7 @@ export const Course = [
   {
     id: "204-AF",
     title: "Accounting Practices in Banks",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "II",
     section: "A&F",
@@ -219,6 +229,7 @@ export const Course = [
   {
     id: "205-AF",
     title: "Quantitative Techniques for Business Decisions",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "II",
     section: "A&F",
@@ -242,6 +253,7 @@ export const Course = [
   {
     id: "301-AF",
     title: "Financial Derivatives",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "III",
     section: "A&F",
@@ -265,6 +277,7 @@ export const Course = [
   {
     id: "302-AF",
     title: "Financial Markets and Services",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "III",
     section: "A&F",
@@ -289,6 +302,7 @@ export const Course = [
   {
     id: "303-AF",
     title: "Tally with GST Applications",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "III",
     section: "A&F",
@@ -313,6 +327,7 @@ export const Course = [
   {
     id: "304-AF",
     title: "Internal Audit and Standard Audit Practices",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "III",
     section: "A&F",
@@ -337,6 +352,7 @@ export const Course = [
   {
     id: "401-AF",
     title: "Strategic Financial Management",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "IV",
     section: "A&F",
@@ -359,6 +375,7 @@ export const Course = [
   {
     id: "402-AF",
     title: "Investment Management",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "IV",
     section: "A&F",
@@ -383,6 +400,7 @@ export const Course = [
   {
     id: "403-AF",
     title: "GST and Customs Duty",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "IV",
     section: "A&F",
@@ -407,6 +425,7 @@ export const Course = [
   {
     id: "405-AF",
     title: "Security Market Operations",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "IV",
     section: "A&F",
@@ -430,6 +449,7 @@ export const Course = [
   {
     id: "101-R",
     title: "Accounting Standards & Reporting",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "I",
     section: "Regular",
@@ -450,6 +470,7 @@ export const Course = [
   {
     id: "102-R",
     title: "Organizational Behavior",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "I",
     section: "Regular",
@@ -470,6 +491,7 @@ export const Course = [
   {
     id: "103-R",
     title: "Business Environment and Policy",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "I",
     section: "Regular",
@@ -490,6 +512,7 @@ export const Course = [
   {
     id: "104-R",
     title: "Managerial Economics",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "I",
     section: "Regular",
@@ -515,6 +538,7 @@ export const Course = [
   {
     id: "105-R",
     title: "Quantitative Techniques for Business Decisions",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "I",
     section: "Regular",
@@ -538,6 +562,7 @@ export const Course = [
   {
     id: "201-R",
     title: "Human Resource Management",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "II",
     section: "Regular",
@@ -562,6 +587,7 @@ export const Course = [
   {
     id: "202-R",
     title: "Financial Management",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "II",
     section: "Regular",
@@ -586,6 +612,7 @@ export const Course = [
   {
     id: "203-R",
     title: "Marketing Management",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "II",
     section: "Regular",
@@ -612,6 +639,7 @@ export const Course = [
   {
     id: "204-R",
     title: "Advanced Cost Accounting",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "II",
     section: "Regular",
@@ -635,6 +663,7 @@ export const Course = [
   {
     id: "205-R",
     title: "Corporate Governance",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "II",
     section: "Regular",
@@ -659,6 +688,7 @@ export const Course = [
   {
     id: "301-R",
     title: "Financial Markets and Services",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "III",
     section: "Regular",
@@ -683,6 +713,7 @@ export const Course = [
   {
     id: "302-R",
     title: "Accounting for Managerial Decisions",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "III",
     section: "Regular",
@@ -707,6 +738,7 @@ export const Course = [
   {
     id: "303-R",
     title: "Security Analysis and Portfolio Management",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "III",
     section: "Regular",
@@ -731,6 +763,7 @@ export const Course = [
   {
     id: "304-R",
     title: "Internal Audit and Standard Audit Practices",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "III",
     section: "Regular",
@@ -755,6 +788,7 @@ export const Course = [
   {
     id: "401-R",
     title: "International Financial Management",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "IV",
     section: "Regular",
@@ -779,6 +813,7 @@ export const Course = [
   {
     id: "402-R",
     title: "Tax Planning & Management",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "IV",
     section: "Regular",
@@ -803,6 +838,7 @@ export const Course = [
   {
     id: "403-R",
     title: "E-Commerce",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "IV",
     section: "Regular",
@@ -827,6 +863,7 @@ export const Course = [
   {
     id: "404-R",
     title: "Strategic Management",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "IV",
     section: "Regular",
@@ -851,6 +888,7 @@ export const Course = [
   {
     id: "405-R",
     title: "Security Market Operations",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "IV",
     section: "Regular",
@@ -874,6 +912,7 @@ export const Course = [
   {
     id: "101-FM",
     title: "Accounting Standards & Reporting",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "I",
     section: "FM",
@@ -894,6 +933,7 @@ export const Course = [
   {
     id: "102-FM",
     title: "Financial Management",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "I",
     section: "FM",
@@ -918,6 +958,7 @@ export const Course = [
   {
     id: "103-FM",
     title: "Business Environment and Policy",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "I",
     section: "FM",
@@ -938,6 +979,7 @@ export const Course = [
   {
     id: "104-FM",
     title: "Organizational Behavior",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "I",
     section: "FM",
@@ -958,6 +1000,7 @@ export const Course = [
   {
     id: "105-FM",
     title: "Quantitative Techniques for Business Decisions",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "I",
     section: "FM",
@@ -981,6 +1024,7 @@ export const Course = [
   {
     id: "201-FM",
     title: "Advanced Cost Accounting",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "II",
     section: "FM",
@@ -1004,6 +1048,7 @@ export const Course = [
   {
     id: "202-FM",
     title: "Financial Markets and Services",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "II",
     section: "FM",
@@ -1028,6 +1073,7 @@ export const Course = [
   {
     id: "203-FM",
     title: "Strategic Financial Management",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "II",
     section: "FM",
@@ -1050,6 +1096,7 @@ export const Course = [
   {
     id: "204-FM",
     title: "Corporate Governance",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "II",
     section: "FM",
@@ -1074,6 +1121,7 @@ export const Course = [
   {
     id: "205-FM",
     title: "Working Capital Management",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "II",
     section: "FM",
@@ -1096,6 +1144,7 @@ export const Course = [
   {
     id: "301-FM",
     title: "Security Analysis and Portfolio Management",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "III",
     section: "FM",
@@ -1120,6 +1169,7 @@ export const Course = [
   {
     id: "302-FM",
     title: "Accounting for Managerial Decisions",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "III",
     section: "FM",
@@ -1144,6 +1194,7 @@ export const Course = [
   {
     id: "303-FM",
     title: "Tally with GST Applications",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "III",
     section: "FM",
@@ -1168,6 +1219,7 @@ export const Course = [
   {
     id: "304-FM",
     title: "Internal Audit and Standard Audit Practices",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "III",
     section: "FM",
@@ -1192,6 +1244,7 @@ export const Course = [
   {
     id: "401-FM",
     title: "Financial Derivatives",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "IV",
     section: "FM",
@@ -1215,6 +1268,7 @@ export const Course = [
   {
     id: "402-FM",
     title: "Project Planning & Control",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "IV",
     section: "FM",
@@ -1238,6 +1292,7 @@ export const Course = [
   {
     id: "403-FM",
     title: "GST and Customs Duty",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "IV",
     section: "FM",
@@ -1262,6 +1317,7 @@ export const Course = [
   {
     id: "405-FM",
     title: "Security Market Operations",
+    price: 200,
     instructor: "Tarak Anand",
     semester: "IV",
     section: "FM",
