@@ -14,11 +14,11 @@ import LoginDialogOpen from "@/components/Small/LearnPage/AlertComponent";
 import ModuleList from "@/components/Small/LearnPage/ModuleList";
 
 export default function LearnPage({ params }: { params: { id: string } }) {
+  const [isDialogOpen, setDialogOpen] = useState(false);
+
   const course = Course.find((c) => c.id === params.id);
 
   const { data: session } = useSession();
-
-  const [isDialogOpen, setDialogOpen] = useState(false);
 
   if (!course) {
     return null;

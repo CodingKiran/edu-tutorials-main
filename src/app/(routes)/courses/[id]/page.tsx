@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Calendar, GraduationCap, Users } from "lucide-react";
 import { Course } from "@/lib/course-data";
-import Image from "next/image";
 
 export default function CourseDetails() {
   const { id } = useParams();
