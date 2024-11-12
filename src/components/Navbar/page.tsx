@@ -3,10 +3,20 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import Image from "next/image";
-import {} from "next-auth/react";
 import NavLinks from "../Small/Navbar/NavLinks";
 import HamburgerMenu from "../Small/Navbar/HamburgerMenu";
 import Logo from "../Small/Navbar/Logo";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import Link from "next/link";
 
 export default function Navbar() {
   const { data: session } = useSession();
@@ -25,25 +35,34 @@ export default function Navbar() {
   const LogOut = () => {
     const userImage = session?.user?.image;
     return (
-      <div className="relative flex justify-between ">
-        <button
-          className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
-          onClick={() => signOut()}
-        >
-          Log out
-        </button>
+      <div className="relative flex justify-between gap-4 ">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            {userImage && (
+              <Image
+                src={userImage}
+                alt={session?.user?.name || "user-image"}
+                className="h-10 w-10 rounded-full"
+                width={40}
+                height={40}
+              />
+            )}
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56 mt-4">
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <Link href={"/dashboard"}>
+                <DropdownMenuItem>Dashboard</DropdownMenuItem>
+              </Link>
+            </DropdownMenuGroup>
 
-        <button className="flex items-center">
-          {userImage && (
-            <Image
-              src={userImage!} // Assuming the user image is stored in session.user.image
-              alt={session?.user?.name || "user-image"}
-              className="h-8 w-8 rounded-full" // Adjust size and shape as needed
-              width={40}
-              height={40}
-            />
-          )}
-        </button>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={() => signOut()}>
+              Log out
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     );
   };
