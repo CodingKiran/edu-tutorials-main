@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   Select,
   SelectContent,
@@ -13,7 +14,6 @@ import { Search } from "lucide-react";
 
 import { Input } from "@/components/ui/input";
 
-import { useState } from "react";
 import CourseList from "@/components/CourseList/CourseList";
 
 const semesters = ["I", "II", "III", "IV"];
