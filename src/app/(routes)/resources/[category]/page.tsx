@@ -29,7 +29,7 @@ export default function CategoryPage({
           className="inline-flex items-center text-primary hover:text-primary/80"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Categories
+          Back to Free Resources
         </Link>
         <h1 className="text-4xl font-bold mt-4">{category.title}</h1>
         <p className="text-muted-foreground mt-2">{category.description}</p>

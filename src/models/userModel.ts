@@ -10,9 +10,6 @@ const userSchema = new mongoose.Schema({
     required: [true, "please provide a valid email"],
     unique: true,
   },
-  course: {
-    type: String,
-  },
 });
 
 const User = mongoose.models.user || mongoose.model("user", userSchema);

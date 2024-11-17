@@ -16,7 +16,7 @@ export const Course = [
     price: 200,
     instructor: "Tarak Anand",
     semester: "I",
-    section: "A&F",
+    section: "A&F, FM, Regular",
     description:
       "A comprehensive study of accounting standards and their application in financial reporting.",
     image:
