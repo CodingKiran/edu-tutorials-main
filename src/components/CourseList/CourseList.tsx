@@ -16,7 +16,8 @@ export default function CourseList({
 }: CourseListProps) {
   const filteredCourses = Course.filter((course) => {
     const matchesSemester = !semester || course.semester === semester;
-    const matchesSection = !section || course.section === section;
+    const matchesSection =
+      !section || course.section.split(", ").includes(section);
     const matchesSearch =
       !searchQuery ||
       course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||

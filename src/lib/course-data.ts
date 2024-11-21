@@ -446,27 +446,7 @@ export const Course = [
     ],
     duration: "3 hours per week",
   },
-  {
-    id: "101-R",
-    title: "Accounting Standards & Reporting",
-    price: 200,
-    instructor: "Tarak Anand",
-    semester: "I",
-    section: "Regular",
-    description:
-      "A comprehensive study of accounting standards and their application in financial reporting.",
-    image:
-      "https://cdn.pixabay.com/photo/2014/07/06/13/55/calculator-385506_1280.jpg",
-    syllabus: [
-      "Chapter 1: Introduction to Accounting Standards",
-      "Chapter 2: Accounting Standard 1: Disclosure of Accounting Policies",
-    ],
-    objectives: [
-      "To understand the theoretical framework of accounting standards.",
-      "To apply accounting standards to practical situations.",
-    ],
-    duration: "3 hours per week",
-  },
+
   {
     id: "102-R",
     title: "Organizational Behavior",
@@ -909,27 +889,7 @@ export const Course = [
     ],
     duration: "3 hours per week",
   },
-  {
-    id: "101-FM",
-    title: "Accounting Standards & Reporting",
-    price: 200,
-    instructor: "Tarak Anand",
-    semester: "I",
-    section: "FM",
-    description:
-      "A comprehensive study of accounting standards and their application in financial reporting.",
-    image:
-      "https://cdn.pixabay.com/photo/2014/07/06/13/55/calculator-385506_1280.jpg",
-    syllabus: [
-      "Chapter 1: Introduction to Accounting Standards",
-      "Chapter 2: Accounting Standard 1: Disclosure of Accounting Policies",
-    ],
-    objectives: [
-      "To understand the theoretical framework of accounting standards.",
-      "To apply accounting standards to practical situations.",
-    ],
-    duration: "3 hours per week",
-  },
+
   {
     id: "102-FM",
     title: "Financial Management",
